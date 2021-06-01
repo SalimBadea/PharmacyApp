@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Fhome"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/Rlayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="5dp"
+        android:padding="4dp">
+
+        <TextView
+            android:id="@+id/add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="false"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="5dp"
+            android:drawableEnd="@drawable/ic_plus"
+            android:gravity="end|center"
+            android:text="Add Medicine  "
+            android:textSize="21sp"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+    <SearchView
+        android:id="@+id/cvSearch"
+        style="@style/Widget.AppCompat.SearchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Rlayout"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="12dp">
+
+    </SearchView>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cvSearch"
+        android:layout_centerHorizontal="true"
+        app:spanCount="2" />
+
+
+</RelativeLayout>

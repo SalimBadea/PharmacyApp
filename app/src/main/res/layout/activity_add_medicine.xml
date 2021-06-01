@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".Ui.AddMedicineActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/et_MedicineName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="6dp"
+            android:hint="Medicine Name"
+            android:textSize="19sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/et_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_MedicineName"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="6dp"
+            android:hint="Description of Medicine"
+            android:maxLines="3"
+            android:textSize="19sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_description"
+            android:text="Expire Date"
+            android:textColor="@color/purple_500"
+            android:textSize="21sp" />
+
+
+        <TextView
+            android:id="@+id/ed_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_date"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="6dp"
+            android:hint="10-10-2021"
+            android:padding="2dp"
+            android:textSize="19sp" />
+
+        <CalendarView
+            android:id="@+id/dpDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ed_date"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="8dp" />
+
+        <TextView
+            android:id="@+id/text_chronic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dpDialog"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:text="Suffer From  a chronic disease ?"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <CheckBox
+            android:id="@+id/yes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_chronic"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="6dp"
+            android:padding="8dp"
+            android:text="YES"
+            android:textColor="@color/black"
+            android:textSize="19sp" />
+
+        <CheckBox
+            android:id="@+id/no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/yes"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="10dp"
+            android:padding="8dp"
+            android:text="No"
+            android:textColor="@color/black"
+            android:textSize="19sp" />
+
+
+        <RelativeLayout
+            android:id="@+id/layoutTexts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/no"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tx_alarmTimeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp"
+                android:text="You Take this medicine every"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/et_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp"
+                android:hint="Hours?"
+                android:inputType="number"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:layout_below="@id/layoutTexts"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="16dp" />
+
+
+    </RelativeLayout>
+</ScrollView>

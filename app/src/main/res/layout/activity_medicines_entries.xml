@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/tvMedicines_entries"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Medicines"
+        android:textColor="#000000"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_margin="8dp"
+        android:layout_toEndOf="@+id/back"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true" />
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_margin="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_back"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMedicines"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tvMedicines_entries"
+        android:layout_centerInParent="true"
+        android:layout_margin="10dp" />
+
+
+    <ImageView
+        android:id="@+id/ivplus"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/ic_plus"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

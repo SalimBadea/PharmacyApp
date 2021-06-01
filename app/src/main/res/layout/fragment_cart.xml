@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/cart_rv_id">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="25dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/ic_back"
+        android:layout_margin="8dp"/>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cart"
+        android:layout_toRightOf="@id/imageView3"
+        android:textColor="#000000"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_margin="8dp"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cart_rv"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="8dp"
+        />
+    <TextView
+        android:id="@+id/tx"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cart_rv"
+        android:text="Total Price : "
+        android:gravity="right"
+        android:layout_marginTop="10dp"
+        android:textColor="#005AA9"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:layout_marginTop="10dp"
+        android:id="@+id/Tprice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cart_rv"
+        android:layout_toEndOf="@+id/tx"
+        android:textColor="#005AA9"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Tprice"
+        android:layout_centerHorizontal="true"
+        android:gravity="left"
+        android:text="+Add other items"
+        android:layout_margin="8dp"
+        android:textSize="15sp"
+        android:textColor="#005AA9"
+        />
+
+    <Button
+        android:id="@+id/btn_next_step"
+        android:layout_width="285dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add"
+        android:layout_centerHorizontal="true"
+        android:text="PROCEED TO CHECKOUT"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        />
+
+</RelativeLayout>
