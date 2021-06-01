@@ -1,4 +1,4 @@
-package pharmacy_manager_team.pharmacymanager.moduels;
+package pharmacy_manager_team.PharmacyManager.moduels;
 
 import java.util.List;
 

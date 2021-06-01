@@ -1,4 +1,4 @@
-package pharmacy_manager_team.pharmacymanager.Ui;
+package pharmacy_manager_team.PharmacyManager.Ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import pharmacy_manager_team.pharmacymanager.R;
+import pharmacy_manager_team.PharmacyManager.R;
 
 public class SplashActivity extends AppCompatActivity {
 

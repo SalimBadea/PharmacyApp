@@ -1,7 +1,6 @@
-package pharmacy_manager_team.pharmacymanager.moduels;
+package pharmacy_manager_team.PharmacyManager.moduels;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
-import pharmacy_manager_team.pharmacymanager.R;
+import pharmacy_manager_team.PharmacyManager.R;
 
 public class Dialog extends AppCompatDialogFragment {
     MedicineModuel.Medicine medicineModuel;

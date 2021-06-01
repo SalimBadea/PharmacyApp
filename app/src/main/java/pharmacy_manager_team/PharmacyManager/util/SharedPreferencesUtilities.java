@@ -1,9 +1,8 @@
-package pharmacy_manager_team.pharmacymanager.util;
+package pharmacy_manager_team.PharmacyManager.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -11,7 +10,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.List;
 
-import pharmacy_manager_team.pharmacymanager.moduels.MedicineModuel;
+import pharmacy_manager_team.PharmacyManager.moduels.MedicineModuel;
 
 public class SharedPreferencesUtilities {
 

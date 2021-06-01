@@ -1,36 +1,23 @@
-package pharmacy_manager_team.pharmacymanager.Ui;
+package pharmacy_manager_team.PharmacyManager.Ui;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-import pharmacy_manager_team.pharmacymanager.R;
-import pharmacy_manager_team.pharmacymanager.adapters.MyMedicinesAdapter;
-import pharmacy_manager_team.pharmacymanager.moduels.Dialog;
-import pharmacy_manager_team.pharmacymanager.moduels.MedicineModuel;
-import pharmacy_manager_team.pharmacymanager.util.SharedPreferencesUtilities;
+import pharmacy_manager_team.PharmacyManager.R;
+import pharmacy_manager_team.PharmacyManager.adapters.MyMedicinesAdapter;
+import pharmacy_manager_team.PharmacyManager.moduels.MedicineModuel;
+import pharmacy_manager_team.PharmacyManager.util.SharedPreferencesUtilities;
 
 public class MedicinesEntriesActivity extends AppCompatActivity {
     RecyclerView RVmedicines;
@@ -61,7 +48,9 @@ public class MedicinesEntriesActivity extends AppCompatActivity {
         });
 
         moduelList1.clear();
-        moduelList = preferencesUtilities.getMEDICINES();
+        if (preferencesUtilities.getMEDICINES() != null)
+            moduelList = preferencesUtilities.getMEDICINES();
+        else moduelList = new ArrayList<>();
         for (int i = 0; i < moduelList.size(); i++) {
             MedicineModuel.Medicine medicine = new MedicineModuel.Medicine();
             medicine.setName(moduelList.get(i).getName());
@@ -69,7 +58,7 @@ public class MedicinesEntriesActivity extends AppCompatActivity {
             medicine.setEx_date(moduelList.get(i).getEx_date());
             medicine.setDescreption(moduelList.get(i).getDescreption());
             medicine.setChronic(moduelList.get(i).isChronic());
-            moduelList1.add(i,medicine);
+            moduelList1.add(i, medicine);
         }
         Log.e("TAG", "onCreate: List >> " + moduelList1.size());
 

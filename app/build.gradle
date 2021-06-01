@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "pharmacy_manager_team.pharmacymanager"
+        applicationId "pharmacy_manager_team.PharmacyManager"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1

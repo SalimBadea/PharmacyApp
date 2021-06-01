@@ -33,25 +33,25 @@
 
     </RelativeLayout>
 
-    <SearchView
+    <EditText
         android:id="@+id/cvSearch"
-        style="@style/Widget.AppCompat.SearchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:drawableStart="@drawable/ic_search"
         android:layout_below="@+id/Rlayout"
+        android:background="@drawable/text"
         android:layout_centerHorizontal="true"
-        android:layout_margin="12dp">
-
-    </SearchView>
+        android:layout_margin="12dp"/>
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvHome"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@id/cvSearch"
-        android:layout_centerHorizontal="true"
-        app:spanCount="2" />
+        android:layout_margin="8dp"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>

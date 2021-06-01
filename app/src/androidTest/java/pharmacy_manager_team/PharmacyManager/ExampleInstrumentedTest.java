@@ -1,4 +1,4 @@
-package pharmacy_manager_team.pharmacymanager;
+package pharmacy_manager_team.PharmacyManager;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("pharmacy_manager_team.pharmacymanager", appContext.getPackageName());
+        assertEquals("pharmacy_manager_team.PharmacyManager", appContext.getPackageName());
     }
 }

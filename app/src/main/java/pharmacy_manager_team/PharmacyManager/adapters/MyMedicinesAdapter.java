@@ -1,4 +1,4 @@
-package pharmacy_manager_team.pharmacymanager.adapters;
+package pharmacy_manager_team.PharmacyManager.adapters;
 
 import android.content.Context;
 import android.util.Log;
@@ -12,9 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import pharmacy_manager_team.pharmacymanager.R;
-import pharmacy_manager_team.pharmacymanager.moduels.Dialog;
-import pharmacy_manager_team.pharmacymanager.moduels.MedicineModuel;
+import pharmacy_manager_team.PharmacyManager.R;
+import pharmacy_manager_team.PharmacyManager.moduels.MedicineModuel;
 
 public class MyMedicinesAdapter extends RecyclerView.Adapter<MyMedicinesAdapter.VH> {
 

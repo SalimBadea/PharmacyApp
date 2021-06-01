@@ -8,18 +8,18 @@
     <fragment
         android:id="@+id/homeFragment2"
         tools:layout="@layout/fragment_home"
-        android:name="pharmacy_manager_team.pharmacymanager.Ui.HomeFragment"
+        android:name="pharmacy_manager_team.PharmacyManager.Ui.HomeFragment"
         android:label="HomeFragment" >
 
     </fragment>
     <fragment
         android:id="@+id/cartFragment2"
         tools:layout="@layout/fragment_cart"
-        android:name="pharmacy_manager_team.pharmacymanager.Ui.CartFragment"
+        android:name="pharmacy_manager_team.PharmacyManager.Ui.CartFragment"
         android:label="CartFragment" />
     <fragment
         android:id="@+id/profileFragment2"
-        android:name="pharmacy_manager_team.pharmacymanager.Ui.ProfileFragment"
+        android:name="pharmacy_manager_team.PharmacyManager.Ui.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

@@ -1,15 +1,13 @@
-package pharmacy_manager_team.pharmacymanager.Ui;
+package pharmacy_manager_team.PharmacyManager.Ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.CheckBox;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -20,9 +18,9 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 
-import pharmacy_manager_team.pharmacymanager.R;
-import pharmacy_manager_team.pharmacymanager.moduels.MedicineModuel;
-import pharmacy_manager_team.pharmacymanager.util.SharedPreferencesUtilities;
+import pharmacy_manager_team.PharmacyManager.R;
+import pharmacy_manager_team.PharmacyManager.moduels.MedicineModuel;
+import pharmacy_manager_team.PharmacyManager.util.SharedPreferencesUtilities;
 
 public class AddMedicineActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package pharmacy_manager_team.pharmacymanager;
+package pharmacy_manager_team.PharmacyManager;
 
 import org.junit.Test;
 
