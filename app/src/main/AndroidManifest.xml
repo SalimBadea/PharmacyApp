@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="pharmacy_manager_team.PharmacyManager">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,18 +11,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PharmacyManager">
-        <activity android:name="pharmacy_manager_team.PharmacyManager.Ui.AddMedicineActivity"></activity>
-        <activity android:name="pharmacy_manager_team.PharmacyManager.Ui.SplashActivity">
+        <activity android:name=".Ui.MedicineDetailsActivity"></activity>
+        <activity android:name=".Ui.EditProfileActivity" />
+        <activity android:name=".Ui.AddMedicineActivity" />
+        <activity android:name=".Ui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="pharmacy_manager_team.PharmacyManager.Ui.SignupActivity" />
-        <activity android:name="pharmacy_manager_team.PharmacyManager.Ui.LoginActivity" />
-        <activity android:name="pharmacy_manager_team.PharmacyManager.Ui.MedicinesEntriesActivity" />
-        <activity android:name="pharmacy_manager_team.PharmacyManager.Ui.MainActivity" />
+        <activity android:name=".Ui.SignupActivity" />
+        <activity android:name=".Ui.LoginActivity" />
+        <activity android:name=".Ui.MedicinesEntriesActivity" />
+        <activity android:name=".Ui.MainActivity" />
     </application>
 
 </manifest>

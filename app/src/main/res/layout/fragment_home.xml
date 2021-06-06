@@ -51,6 +51,7 @@
         android:layout_height="match_parent"
         android:layout_below="@id/cvSearch"
         android:layout_margin="8dp"
+        tools:listitem="@layout/home_item"
         android:layout_centerHorizontal="true" />
 
 
