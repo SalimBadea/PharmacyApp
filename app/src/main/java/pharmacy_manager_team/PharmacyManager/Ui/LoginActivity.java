@@ -71,13 +71,13 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 r = response.trim();
-                if (r.equals("18")) {
+                if (r.equals("Email Or Password are wrong")) {
+                    Toast.makeText(LoginActivity.this, r, Toast.LENGTH_SHORT).show();
+                } else {
                     preferencesUtilities.setLoggedIn(true);
                     Toast.makeText(LoginActivity.this, "Welcome to Pharmacy manager", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     finish();
-                } else {
-                    Toast.makeText(LoginActivity.this, r, Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {
