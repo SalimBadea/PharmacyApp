@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -50,12 +51,7 @@ public class LoginActivity extends AppCompatActivity {
                 password.setError("please Enter Your password..");
                 password.requestFocus();
             } else {
-                String msg = loginAcc(Email, Password);
-                preferencesUtilities.setLoggedIn(true);
-                if (msg != "")
-                    Toast.makeText(this, "Welcome to Pharmacy manager", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                finish();
+                loginAcc(Email, Password);
             }
         });
         signup = findViewById(R.id.signup);
@@ -68,23 +64,28 @@ public class LoginActivity extends AppCompatActivity {
 
     String r = "";
 
-    public String loginAcc(String email, String pass) {
+    public void loginAcc(String email, String pass) {
 
         String url = "https://pharmacymanagerr.000webhostapp.com/login.php?get=1&email=" + email + "&pass=" + pass + "";
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Toast.makeText(LoginActivity.this, response.trim(), Toast.LENGTH_LONG).show();
-                        r = response.trim();
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(LoginActivity.this, error.toString(), Toast.LENGTH_LONG).show();
-                    }
-                }) {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                r = response.trim();
+                if (r.equals("18")) {
+                    preferencesUtilities.setLoggedIn(true);
+                    Toast.makeText(LoginActivity.this, "Welcome to Pharmacy manager", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    finish();
+                } else {
+                    Toast.makeText(LoginActivity.this, r, Toast.LENGTH_SHORT).show();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(LoginActivity.this, error.toString(), Toast.LENGTH_LONG).show();
+            }
+        }) {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
@@ -95,7 +96,6 @@ public class LoginActivity extends AppCompatActivity {
         };
         RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
         requestQueue.add(stringRequest);
-        return r;
     }
 
 }
