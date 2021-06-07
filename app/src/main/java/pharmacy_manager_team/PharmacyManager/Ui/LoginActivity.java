@@ -71,10 +71,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 r = response.trim();
+                Log.e("Login", "onResponse: Response >> " + r);
                 if (r.equals("Email Or Password are wrong")) {
                     Toast.makeText(LoginActivity.this, r, Toast.LENGTH_SHORT).show();
                 } else {
                     preferencesUtilities.setLoggedIn(true);
+                    preferencesUtilities.setUserId(r);
                     Toast.makeText(LoginActivity.this, "Welcome to Pharmacy manager", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     finish();

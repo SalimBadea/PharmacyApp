@@ -2,6 +2,7 @@ package pharmacy_manager_team.PharmacyManager.Ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,10 +14,19 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 
+import java.sql.DataTruncation;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import pharmacy_manager_team.PharmacyManager.R;
 import pharmacy_manager_team.PharmacyManager.moduels.MedicineModuel;
@@ -43,6 +53,9 @@ public class AddMedicineActivity extends AppCompatActivity {
     String mDate;
     String mDesc;
     String mHours;
+    String mChronic;
+    int time;
+    int userID;
     boolean isChronic;
 
     @Override
@@ -51,6 +64,8 @@ public class AddMedicineActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_medicine);
 
         sharedPreferences = new SharedPreferencesUtilities(this);
+        userID = Integer.parseInt(sharedPreferences.getUserId());
+        Toast.makeText(this, userID+"", Toast.LENGTH_SHORT).show();
         name = findViewById(R.id.et_MedicineName);
         ExDate = findViewById(R.id.ed_date);
         hours = findViewById(R.id.et_time);
@@ -63,9 +78,14 @@ public class AddMedicineActivity extends AppCompatActivity {
 
         dpDialog.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
             date = dayOfMonth + "-" + (month + 1) + "-" + year;
-            if (month < 10) {
+            if (month < 10 ) {
                 String mMonth = "0" + (month + 1);
-                date = year + "-" + (mMonth) + "-" + dayOfMonth;
+                if (dayOfMonth < 10) {
+                    String day = "0" + dayOfMonth;
+                    date = year + "-" + (mMonth) + "-" + day;
+                }else {
+                    date = year + "-" + (mMonth) + "-" + dayOfMonth;
+                }
             } else {
                 date = year + "-" + (month + 1) + "-" + dayOfMonth;
             }
@@ -104,20 +124,57 @@ public class AddMedicineActivity extends AppCompatActivity {
             mName = name.getText().toString();
             mDate = ExDate.getText().toString();
             mDesc = desc.getText().toString();
-            if (isChronic)
+            if (isChronic) {
+                mChronic = "yes";
                 mHours = hours.getText().toString();
-            else mHours = "";
+                time = Integer.parseInt(mHours);
+            }else {
+                mChronic = "no";
+                time = 0;
+                mHours = "";
+            }
 
-            medicine = new MedicineModuel.Medicine(mName, mDate, isChronic, mDesc, mHours);
-            moduelList.add(medicine);
-            moduelList.addAll(moduelList);
-
-            sharedPreferences.setMEDICINES(moduelList);
-
-
-            Log.e("List", "addMedicine: List >> " + moduelList.size());
-            finish();
+            AddNewMedicines(mName,mDesc,mDate,mChronic,time,userID);
+//            medicine = new MedicineModuel.Medicine(mName, mDate, isChronic, mDesc, mHours);
+//            moduelList.add(medicine);
+//            moduelList.addAll(moduelList);
+//
+//            sharedPreferences.setMEDICINES(moduelList);
         });
+    }
+
+    public void AddNewMedicines(String name,String desc ,String exData , String chronic, int time, int clint_id){
+        String url="https://pharmacymanagerr.000webhostapp.com/c_pharmaceuticals.php?add=1&MedicineName="+name+"&DescriptionMedicine="+desc+"&ExpireDate="+exData+"&Chronic="+chronic+"&Time="+time+"&Client_ID="+clint_id;
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.e("Add Medicine", "onResponse: Response >> " + response);
+                        if (response.equals("error")){
+                            Toast.makeText(AddMedicineActivity.this,response.trim(),Toast.LENGTH_LONG).show();
+                        }else {
+                            Toast.makeText(AddMedicineActivity.this,response.trim(),Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(AddMedicineActivity.this, MedicinesEntriesActivity.class));
+                            finish();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(AddMedicineActivity.this, error.toString(), Toast.LENGTH_LONG).show();
+                    }
+                }){
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("add","medicine");
+
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(AddMedicineActivity.this);
+        requestQueue.add(stringRequest);
     }
 
     private String setDataFromSharedPreferences() {

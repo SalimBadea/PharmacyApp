@@ -13,31 +13,32 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import pharmacy_manager_team.PharmacyManager.R;
+import pharmacy_manager_team.PharmacyManager.moduels.ClientMedicines;
 import pharmacy_manager_team.PharmacyManager.moduels.MedicineModuel;
 
 public class MyMedicinesAdapter extends RecyclerView.Adapter<MyMedicinesAdapter.VH> {
 
-    List<MedicineModuel.Medicine> medicineModuels;
+    List<ClientMedicines> medicineModuels;
     Context context;
 
 
-    public MyMedicinesAdapter(List<MedicineModuel.Medicine> medicineModuels, Context context) {
+    public MyMedicinesAdapter(List<ClientMedicines> medicineModuels, Context context) {
         this.medicineModuels = medicineModuels;
         this.context = context;
     }
 
-    public List<MedicineModuel.Medicine> getMedicineModuels() {
+    public List<ClientMedicines> getMedicineModuels() {
         return medicineModuels;
     }
 
-    public void setMedicineModuels(List<MedicineModuel.Medicine> medicineModuel) {
+    public void setMedicineModuels(List<ClientMedicines> medicineModuel) {
         if (medicineModuel != null)
             medicineModuels.addAll(medicineModuel);
         notifyDataSetChanged();
 
     }
 
-    public void addItem(MedicineModuel.Medicine moduel) {
+    public void addItem(ClientMedicines moduel) {
         medicineModuels.add(moduel);
         notifyDataSetChanged();
     }
@@ -52,28 +53,25 @@ public class MyMedicinesAdapter extends RecyclerView.Adapter<MyMedicinesAdapter.
     @Override
     public void onBindViewHolder(@NonNull MyMedicinesAdapter.VH holder, int position) {
         holder.name.setText(medicineModuels.get(position).getName());
-        holder.date.setText(medicineModuels.get(position).getEx_date());
-
-
-        Log.e("Adapter", "onBindViewHolder: " + medicineModuels.get(position).getName());
-        Log.e("Adapter", "count: " + medicineModuels.size());
+        holder.date.setText(medicineModuels.get(position).getDate());
+        holder.desc.setText(medicineModuels.get(position).getDescription());
+        holder.time.setText(medicineModuels.get(position).getTime());
     }
 
     @Override
     public int getItemCount() {
-        if (medicineModuels != null)
-            return medicineModuels.size();
-        else return 0;
+        return medicineModuels.size();
     }
 
     public static class VH extends RecyclerView.ViewHolder {
-        TextView name,
-                date;
+        TextView name, date, desc, time;
 
         public VH(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.med_name);
             date = itemView.findViewById(R.id.med_date);
+            desc = itemView.findViewById(R.id.med_desc);
+            time = itemView.findViewById(R.id.med_time);
         }
     }
 }

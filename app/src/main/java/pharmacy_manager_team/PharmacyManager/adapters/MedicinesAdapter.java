@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -26,15 +27,10 @@ import pharmacy_manager_team.PharmacyManager.util.SharedPreferencesUtilities;
 public class MedicinesAdapter extends RecyclerView.Adapter<MedicinesAdapter.ViewHolder> {
     List<Medicines> medicinesList;
     Context context;
-    LayoutInflater inflater;
-    private Typeface custom_font;
-    SharedPreferencesUtilities preferencesUtilities;
 
     public MedicinesAdapter(List<Medicines> list, Context context) {
         this.medicinesList = list;
         this.context = context;
-        inflater = LayoutInflater.from(context);
-        preferencesUtilities = new SharedPreferencesUtilities(context);
     }
 
     public void setMedicinesList(List<Medicines> list) {
@@ -47,12 +43,7 @@ public class MedicinesAdapter extends RecyclerView.Adapter<MedicinesAdapter.View
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View v = inflater.inflate(R.layout.home_item, parent, false);
-        try {
-            custom_font = Typeface.createFromAsset(parent.getContext().getAssets(), "Cairo-Regular.ttf");
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_item, parent, false);
         ViewHolder vh = new ViewHolder(v);
         return vh;
     }
@@ -83,7 +74,7 @@ public class MedicinesAdapter extends RecyclerView.Adapter<MedicinesAdapter.View
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        CardView item;
+        RelativeLayout item;
         ImageView imageView;
         TextView name, count, price;
 
@@ -95,8 +86,6 @@ public class MedicinesAdapter extends RecyclerView.Adapter<MedicinesAdapter.View
             count = itemView.findViewById(R.id.textView17);
             price = itemView.findViewById(R.id.price);
 
-            name.setTypeface(custom_font);
-            count.setTypeface(custom_font);
         }
     }
 

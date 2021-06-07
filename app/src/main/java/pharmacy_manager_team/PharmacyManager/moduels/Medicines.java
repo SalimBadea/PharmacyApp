@@ -1,16 +1,16 @@
 package pharmacy_manager_team.PharmacyManager.moduels;
 
 public class Medicines {
-    int id;
+    String id;
     String name;
-    int price;
-    int quantity;
+    String price;
+    String quantity;
     String image;
 
     public Medicines() {
     }
 
-    public Medicines(int id, String name, int price, int quantity, String image) {
+    public Medicines(String id, String name, String price, String quantity, String image) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -18,11 +18,11 @@ public class Medicines {
         this.image = image;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -34,19 +34,19 @@ public class Medicines {
         this.name = name;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
-    public int getQuantity() {
+    public String getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
 

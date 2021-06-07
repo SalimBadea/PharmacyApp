@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -90,6 +91,7 @@ public class SignupActivity extends AppCompatActivity {
                 Password = fPassword.getText().toString();
 
                 String msg = createNewAcount(Phone,Name,Email,Address,Age,Password);
+
                 preferencesUtilities.setUserName(Name);
                 preferencesUtilities.setEmail(Email);
                 preferencesUtilities.setPHONE(Phone);
@@ -111,7 +113,8 @@ public class SignupActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         Toast.makeText(SignupActivity.this,response.trim(),Toast.LENGTH_LONG).show();
-                        r = response ;
+                        r = response.trim() ;
+                        Log.e("SignUp", "onResponse: Response >> " + r);
                     }
                 },
                 new Response.ErrorListener() {

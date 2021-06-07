@@ -15,7 +15,7 @@ import pharmacy_manager_team.PharmacyManager.R;
 
 public class MedicineDetailsActivity extends AppCompatActivity {
     ImageView mImage,back;
-    TextView mName, mPrice, mQty;
+    TextView mName, mPrice, mQty, tv0;
     Button add;
     String id, name, image, qty, price;
 
@@ -29,6 +29,7 @@ public class MedicineDetailsActivity extends AppCompatActivity {
         mName = findViewById(R.id.mname);
         mPrice = findViewById(R.id.mprice);
         mQty = findViewById(R.id.mqty);
+        tv0 = findViewById(R.id.tv0);
         add = findViewById(R.id.madd);
 
         Intent intent = getIntent();
@@ -40,6 +41,7 @@ public class MedicineDetailsActivity extends AppCompatActivity {
 
         Picasso.with(this).load(image).error(R.drawable.ic_launcher_background).into(mImage);
         mName.setText(name);
+        tv0.setText(name);
         mPrice.setText(price);
         mQty.setText(qty);
 
