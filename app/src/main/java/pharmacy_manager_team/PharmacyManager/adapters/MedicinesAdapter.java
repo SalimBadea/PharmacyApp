@@ -51,9 +51,11 @@ public class MedicinesAdapter extends RecyclerView.Adapter<MedicinesAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
-        Picasso.with(context).load(medicinesList.get(position).getImage()).error(R.drawable.ic_launcher_background).into(holder.imageView);
+        if (medicinesList.get(position).getImage() != null && !medicinesList.get(position).getImage().isEmpty())
+            Picasso.with(context).load(medicinesList.get(position).getImage()).error(R.drawable.logo).into(holder.imageView);
+
         holder.name.setText(medicinesList.get(position).getName());
-        holder.count.setText(medicinesList.get(position).getQuantity()+"");
+        holder.count.setText(medicinesList.get(position).getQuantity() + "");
 
         holder.item.setOnClickListener(v -> {
             Intent i = new Intent(context, MedicineDetailsActivity.class);

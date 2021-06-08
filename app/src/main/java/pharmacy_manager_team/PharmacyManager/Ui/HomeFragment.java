@@ -82,7 +82,7 @@ public class HomeFragment extends Fragment {
                 try {
                     JSONArray info = new JSONArray(response);
 
-                    for (int j = 0; j < info.length(); j++) {
+                    for (int j = 0; j < info.length() - 1; j++) {
                         JSONObject finall = info.getJSONObject(j);
 
                         String id = finall.getString("ID");
