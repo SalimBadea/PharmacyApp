@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +16,10 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import pharmacy_manager_team.PharmacyManager.R;
@@ -52,16 +55,21 @@ public class MedicinesAdapter extends RecyclerView.Adapter<MedicinesAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
         if (medicinesList.get(position).getImage() != null && !medicinesList.get(position).getImage().isEmpty())
-            Picasso.with(context).load(medicinesList.get(position).getImage()).error(R.drawable.logo).into(holder.imageView);
+            Glide.with(context)
+                    .load("http://" + medicinesList.get(position).getImage())
+                    .error(R.drawable.logo)
+                    .into(holder.imageView);
 
+        Log.e("TAG", "onBindViewHolder: image >> " + medicinesList.get(position).getImage());
         holder.name.setText(medicinesList.get(position).getName());
         holder.count.setText(medicinesList.get(position).getQuantity() + "");
+        holder.price.setText(medicinesList.get(position).getPrice());
 
         holder.item.setOnClickListener(v -> {
             Intent i = new Intent(context, MedicineDetailsActivity.class);
             i.putExtra("id", medicinesList.get(position).getId());
             i.putExtra("name", medicinesList.get(position).getName());
-            i.putExtra("image", medicinesList.get(position).getImage());
+            i.putExtra("image", "http://"+medicinesList.get(position).getImage());
             i.putExtra("qty", medicinesList.get(position).getQuantity());
             i.putExtra("price", medicinesList.get(position).getPrice());
             context.startActivity(i);
@@ -91,5 +99,10 @@ public class MedicinesAdapter extends RecyclerView.Adapter<MedicinesAdapter.View
         }
     }
 
+    public void setFilter(List<Medicines> newlist) {
+        medicinesList = new ArrayList<>();
+        medicinesList.addAll(newlist);
+        notifyDataSetChanged();
+    }
 
 }

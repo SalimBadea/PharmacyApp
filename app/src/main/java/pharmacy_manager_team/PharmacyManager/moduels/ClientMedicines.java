@@ -6,19 +6,21 @@ public class ClientMedicines {
     String description;
     String date;
     String chronic;
-    String time;
+    long time;
+    String mTime;
     String client_id;
 
     public ClientMedicines() {
     }
 
-    public ClientMedicines(String id, String name, String description, String date, String chronic, String time, String client_id) {
+    public ClientMedicines(String id, String name, String description, String date, String chronic, long time,String mTime, String client_id) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.date = date;
         this.chronic = chronic;
         this.time = time;
+        this.mTime = mTime;
         this.client_id = client_id;
     }
 
@@ -62,12 +64,20 @@ public class ClientMedicines {
         this.chronic = chronic;
     }
 
-    public String getTime() {
+    public void setTime(long time) {
+        this.time = time;
+    }
+
+    public long getTime() {
         return time;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public String getmTime() {
+        return mTime;
+    }
+
+    public void setmTime(String mTime) {
+        this.mTime = mTime;
     }
 
     public String getClient_id() {

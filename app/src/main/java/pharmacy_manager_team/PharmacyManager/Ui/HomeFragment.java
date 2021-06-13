@@ -7,10 +7,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -37,6 +40,7 @@ import java.util.Map;
 
 import pharmacy_manager_team.PharmacyManager.R;
 import pharmacy_manager_team.PharmacyManager.adapters.MedicinesAdapter;
+import pharmacy_manager_team.PharmacyManager.moduels.MedicineModuel;
 import pharmacy_manager_team.PharmacyManager.moduels.Medicines;
 
 
@@ -46,6 +50,7 @@ public class HomeFragment extends Fragment {
     ProgressBar progressBar;
     List<Medicines> list;
     MedicinesAdapter mAdapter;
+    EditText cvSearch;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -58,6 +63,7 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         recyclerView = view.findViewById(R.id.rvHome);
         add = view.findViewById(R.id.Rlayout);
+        cvSearch = view.findViewById(R.id.cvSearch);
         progressBar = view.findViewById(R.id.progressBar);
         add.setOnClickListener(v -> {
             startActivity(new Intent(getContext(), MedicinesEntriesActivity.class));
@@ -67,6 +73,30 @@ public class HomeFragment extends Fragment {
         mAdapter = new MedicinesAdapter(list, getActivity());
 
         getData();
+
+        cvSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                s = s.toString();
+                List<Medicines> newlist = new ArrayList<Medicines>();
+                for (Medicines medicines : list) {
+                    String name = medicines.getName().toLowerCase();
+                    if (name.contains(s))
+                        newlist.add(medicines);
+                    mAdapter.notifyDataSetChanged();
+                }
+                mAdapter.setFilter(newlist);
+                mAdapter.notifyDataSetChanged();
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
         return view;
     }
 

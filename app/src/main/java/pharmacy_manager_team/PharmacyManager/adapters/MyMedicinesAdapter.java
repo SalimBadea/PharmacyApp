@@ -55,7 +55,7 @@ public class MyMedicinesAdapter extends RecyclerView.Adapter<MyMedicinesAdapter.
         holder.name.setText(medicineModuels.get(position).getName());
         holder.date.setText(medicineModuels.get(position).getDate());
         holder.desc.setText(medicineModuels.get(position).getDescription());
-        holder.time.setText(medicineModuels.get(position).getTime());
+        holder.time.setText(medicineModuels.get(position).getmTime());
     }
 
     @Override

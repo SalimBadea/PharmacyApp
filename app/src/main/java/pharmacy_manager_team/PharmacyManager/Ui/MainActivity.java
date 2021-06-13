@@ -3,10 +3,6 @@ package pharmacy_manager_team.PharmacyManager.Ui;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.NavigationUI;
-
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -64,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
 
     private void openFragment(Fragment fragment) {
+        getSupportFragmentManager().popBackStackImmediate();
         getSupportFragmentManager().beginTransaction().replace(R.id.container,
                 fragment).commit();
     }

@@ -16,7 +16,7 @@
         <ImageView
             android:id="@+id/imageView4"
             android:layout_width="90dp"
-            android:layout_height="101dp"
+            android:layout_height="90dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_margin="8dp"
@@ -24,42 +24,40 @@
             />
 
         <ImageView
-            android:id="@+id/remove_img"
-            android:layout_width="35dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_margin="8dp"
-            android:src="@drawable/ic_iconly_broken_delete" />
-
-        <ImageView
             android:id="@+id/increment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/textView14"
-            android:layout_margin="8dp"
-            android:padding="4dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:layout_toRightOf="@id/textView16"
-            android:src="@drawable/ic_group_1138"
-            />
+            android:padding="4dp"
+            android:src="@drawable/ic_group_1138" />
 
         <ImageView
             android:id="@+id/decrement"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView14"
-            android:layout_margin="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:padding="4dp"
             android:layout_toRightOf="@id/textView17"
             android:src="@drawable/ic_group_1137" />
+
         <TextView
             android:id="@+id/textView14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/imageView4"
+            android:layout_toEndOf="@+id/imageView4"
+            android:layout_margin="8dp"
             android:text="Medicine x"
             android:textColor="#000000"
-            android:textSize="13sp" />
+            android:textSize="20sp"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/quantity_tv"
@@ -67,43 +65,49 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView14"
             android:layout_margin="8dp"
-            android:layout_toRightOf="@+id/imageView4"
+            android:layout_toEndOf="@+id/imageView4"
             android:text="QTY :"
-            android:textColor="#000000"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            android:textColor="#979797"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/textView16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/quantity_tv"
+            android:layout_below="@id/textView17"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:layout_toEndOf="@+id/imageView4"
             android:text="Price : "
-            android:textColor="#005AA9"
-            android:textSize="13sp" />
+            android:textColor="#979797"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/quantity_tv"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
             android:layout_marginBottom="8dp"
             android:layout_toEndOf="@+id/textView16"
             android:text="860 EGP "
             android:textColor="#005AA9"
-            android:textSize="13sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textView17"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/textView14"
-            android:layout_margin="8dp"
-            android:layout_toRightOf="@id/increment"
+            android:layout_toEndOf="@id/increment"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:gravity="center"
-            android:padding="4dp"
+            android:textSize="16dp"
+            android:textColor="#000000"
             android:text="1"
             android:layout_centerHorizontal="true"/>
 

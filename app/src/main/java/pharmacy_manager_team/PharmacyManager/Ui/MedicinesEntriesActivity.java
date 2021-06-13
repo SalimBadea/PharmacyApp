@@ -46,7 +46,7 @@ public class MedicinesEntriesActivity extends AppCompatActivity {
     MyMedicinesAdapter myMedicinesAdapter;
     ImageView back, plus;
     Gson gson;
-    String medicines;
+    String userId;
 
     SharedPreferencesUtilities preferencesUtilities;
 
@@ -56,6 +56,7 @@ public class MedicinesEntriesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_medicines_entries);
 
         preferencesUtilities = new SharedPreferencesUtilities(this);
+        userId = preferencesUtilities.getUserId();
 
         RVmedicines = findViewById(R.id.rvMedicines);
 
@@ -70,15 +71,15 @@ public class MedicinesEntriesActivity extends AppCompatActivity {
             finish();
         });
 
-        getData();
+        getData(userId);
 
         back.setOnClickListener(v -> finish());
 
     }
 
-    private void getData() {
+    private void getData(String userid) {
         progressBar.setVisibility(View.VISIBLE);
-        String homeUrl = "https://pharmacymanagerr.000webhostapp.com/c_pharmaceuticals_1.php";
+        String homeUrl = "https://pharmacymanagerr.000webhostapp.com/c_pharmaceuticals_1.php?user_id="+ userid;
         StringRequest stringRequest = new StringRequest(Request.Method.GET, homeUrl, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -103,7 +104,7 @@ public class MedicinesEntriesActivity extends AppCompatActivity {
                         medicines.setName(name);
                         medicines.setDate(date);
                         medicines.setDescription(desc);
-                        medicines.setTime(time);
+                        medicines.setmTime(time);
 
                         moduelList.add(medicines);
                         myMedicinesAdapter.notifyDataSetChanged();
