@@ -58,8 +58,9 @@ public class MedicineDetailsActivity extends AppCompatActivity {
         image = intent.getStringExtra("image");
         qty = intent.getStringExtra("qty");
         price = intent.getStringExtra("price");
+        mImage.setImageResource(R.drawable.logo);
 
-        Glide.with(this).load(image).error(R.drawable.logo).into(mImage);
+//        Glide.with(this).load(image).error(R.drawable.logo).into(mImage);
         mName.setText(name);
         tv0.setText(name);
         mPrice.setText(price);

@@ -18,17 +18,24 @@
 
         <TextView
             android:id="@+id/add"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="false"
+            android:layout_toStartOf="@id/ivAdd"
             android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
             android:layout_margin="5dp"
-            android:drawableEnd="@drawable/ic_plus"
-            android:gravity="end|center"
             android:text="Add Medicine  "
             android:textSize="21sp"
             android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/ivAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_plus"
+            android:layout_margin="5dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"/>
+
 
 
     </RelativeLayout>

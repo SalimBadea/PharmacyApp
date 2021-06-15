@@ -57,7 +57,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
 
         holder.name.setText(cartList.get(position).getName());
         holder.Tprice.setText(cartList.get(position).getPrice());
-        Glide.with(context).load(cartList.get(position).getImage()).error(R.drawable.logo).into(holder.imageView);
+        holder.imageView.setImageResource(R.drawable.logo);
+
+//        Glide.with(context).load(cartList.get(position).getImage()).error(R.drawable.logo).into(holder.imageView);
         holder.number.setText(cartList.get(position).getQuantity());
 
 

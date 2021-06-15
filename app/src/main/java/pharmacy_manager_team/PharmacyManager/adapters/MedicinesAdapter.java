@@ -54,11 +54,12 @@ public class MedicinesAdapter extends RecyclerView.Adapter<MedicinesAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
-        if (medicinesList.get(position).getImage() != null && !medicinesList.get(position).getImage().isEmpty())
-            Glide.with(context)
-                    .load("http://" + medicinesList.get(position).getImage())
-                    .error(R.drawable.logo)
-                    .into(holder.imageView);
+        holder.imageView.setImageResource(R.drawable.logo);
+//        if (medicinesList.get(position).getImage() != null && !medicinesList.get(position).getImage().isEmpty())
+//            Glide.with(context)
+//                    .load("http://" + medicinesList.get(position).getImage())
+//                    .error(R.drawable.logo)
+//                    .into(holder.imageView);
 
         Log.e("TAG", "onBindViewHolder: image >> " + medicinesList.get(position).getImage());
         holder.name.setText(medicinesList.get(position).getName());
