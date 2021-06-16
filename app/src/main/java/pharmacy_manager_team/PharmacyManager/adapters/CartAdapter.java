@@ -18,28 +18,29 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import pharmacy_manager_team.PharmacyManager.R;
+import pharmacy_manager_team.PharmacyManager.moduels.CartMedicines;
 import pharmacy_manager_team.PharmacyManager.moduels.Medicines;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> {
-    List<Medicines> cartList;
+    List<CartMedicines> cartList;
     Context context;
     boolean clicked = false;
     double price = 0.0;
     double count = 0;
     double total = 0.0;
 
-    public CartAdapter(List<Medicines> cartList, Context context) {
+    public CartAdapter(List<CartMedicines> cartList, Context context) {
         this.cartList = cartList;
         this.context = context;
     }
 
-    public void setCartList(List<Medicines> cList) {
+    public void setCartList(List<CartMedicines> cList) {
         if (cList != null)
             cartList.addAll(cList);
         notifyDataSetChanged();
     }
 
-    public List<Medicines> getCartList() {
+    public List<CartMedicines> getCartList() {
         return cartList;
     }
 
@@ -53,7 +54,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Medicines cartDatum = cartList.get(position);
+        CartMedicines cartDatum = cartList.get(position);
 
         holder.name.setText(cartList.get(position).getName());
         holder.Tprice.setText(cartList.get(position).getPrice());

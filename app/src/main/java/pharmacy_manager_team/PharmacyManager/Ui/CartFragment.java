@@ -34,6 +34,7 @@ import java.util.List;
 import pharmacy_manager_team.PharmacyManager.R;
 import pharmacy_manager_team.PharmacyManager.adapters.CartAdapter;
 import pharmacy_manager_team.PharmacyManager.adapters.MedicinesAdapter;
+import pharmacy_manager_team.PharmacyManager.moduels.CartMedicines;
 import pharmacy_manager_team.PharmacyManager.moduels.Medicines;
 import pharmacy_manager_team.PharmacyManager.util.SharedPreferencesUtilities;
 
@@ -44,7 +45,7 @@ public class CartFragment extends Fragment {
     SharedPreferencesUtilities preferencesUtilities;
     String userId, medicineId, qty;
     CartAdapter cartAdapter;
-    List<Medicines> medicines;
+    List<CartMedicines> medicines;
     ProgressBar progressBar;
 
     public CartFragment() {
@@ -95,7 +96,7 @@ public class CartFragment extends Fragment {
                 try {
                     JSONArray info = new JSONArray(response);
 
-                    for (int j = 0; j < info.length() - 1; j++) {
+                    for (int j = 0; j < info.length(); j++) {
                         JSONObject finall = info.getJSONObject(j);
 
                         String id = finall.getString("ID");
@@ -104,14 +105,14 @@ public class CartFragment extends Fragment {
                         String pr = finall.getString("Price");
                         String ph = finall.getString("Picture");
 
-                        Medicines mediciness = new Medicines();
-                        mediciness.setId(id);
-                        mediciness.setName(name);
-                        mediciness.setQuantity(qty);
-                        mediciness.setPrice(pr);
-                        mediciness.setImage(ph);
+                        CartMedicines cartMedicines = new CartMedicines();
+                        cartMedicines.setId(id);
+                        cartMedicines.setName(name);
+                        cartMedicines.setQuantity(qty);
+                        cartMedicines.setPrice(pr);
+                        cartMedicines.setImage(ph);
 
-                        medicines.add(mediciness);
+                        medicines.add(cartMedicines);
                         cartAdapter.notifyDataSetChanged();
 
                     }
@@ -131,7 +132,7 @@ public class CartFragment extends Fragment {
         requestQueue.add(stringRequest);
     }
 
-    private void setupRecycleview(List<Medicines> data) {
+    private void setupRecycleview(List<CartMedicines> data) {
         cartAdapter = new CartAdapter(data, getActivity());
         cart_rv.setHasFixedSize(true);
         cartAdapter = new CartAdapter(medicines, getActivity());
@@ -150,14 +151,13 @@ public class CartFragment extends Fragment {
             public void onResponse(String response) {
                 r = response.trim();
                 Log.e("cart Response", "onResponse: Response >> " + r);
-                if (response.equals("Done")) {
+                if (!r.equals("Done")) {
+                    progressBar.setVisibility(View.GONE);
+                    Toast.makeText(getActivity(), r, Toast.LENGTH_SHORT).show();
+                }else{
                     progressBar.setVisibility(View.GONE);
                     Toast.makeText(getActivity(), "Confirm Successfully", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getActivity(), MainActivity.class).putExtra("position", 0));
-
-                }else{
-                    progressBar.setVisibility(View.GONE);
-                    Toast.makeText(getActivity(), r, Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {
